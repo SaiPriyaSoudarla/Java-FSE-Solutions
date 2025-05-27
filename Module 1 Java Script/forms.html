@@ -1,0 +1,22 @@
+<!-- registration.html -->
+<form id="registrationForm">
+  <label>
+    Name:
+    <input type="text" name="userName" required />
+  </label>
+  <label>
+    Email:
+    <input type="email" name="userEmail" required />
+  </label>
+  <label>
+    Select Event:
+    <select name="eventSelect" required>
+      <option value="">--Choose an event--</option>
+      <option value="1">Music Concert</option>
+      <option value="2">Art Workshop</option>
+      <option value="3">Dance Festival</option>
+    </select>
+  </label>
+  <button type="submit">Register</button>
+  <p id="errorMsg" style="color: red;"></p>
+</form>
