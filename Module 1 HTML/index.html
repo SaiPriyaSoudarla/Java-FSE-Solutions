@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Community Event Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#home">Home</a> |
+    <a href="#events">Events</a> |
+    <a href="#contact">Contact</a> |
+    <a href="help.html" target="_blank">Help</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Welcome section -->
+    <section id="home">
+      <div id="welcomeBanner">
+        <h1>Welcome to the Community Event Portal</h1>
+        <p>Check out our <span style="color: red; font-weight: bold;">limited-time offers</span> for upcoming events!</p>
+      </div>
+    </section>
+
+    <!-- Events section -->
+    <section id="events">
+      <h2 class="highlight">Upcoming Events</h2>
+
+      <!-- Image Gallery -->
+      <table>
+        <caption>Memories from Previous Events</caption>
+        <tr>
+          <td><img src="img1.jpg" alt="Event 1" title="Community Clean-up" class="event-img"></td>
+          <td><img src="img2.jpg" alt="Event 2" title="Tree Plantation" class="event-img"></td>
+          <td><img src="img3.jpg" alt="Event 3" title="Festival Fair" class="event-img"></td>
+        </tr>
+        <tr>
+          <td><img src="img4.jpg" alt="Event 4" title="Yoga Camp" class="event-img"></td>
+          <td><img src="img5.jpg" alt="Event 5" title="Book Drive" class="event-img"></td>
+          <td><img src="img6.jpg" alt="Event 6" title="Art Workshop" class="event-img"></td>
+        </tr>
+      </table>
+
+      <!-- Event Registration -->
+      <form id="registrationForm">
+        <h3>Register for an Event</h3>
+        <input type="text" name="name" placeholder="Your Name" required autofocus><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="date" name="date" required><br>
+        <select name="eventType" id="eventType" onchange="showFee(this)">
+          <option value="">Select Event</option>
+          <option value="cleanup">Community Clean-up</option>
+          <option value="yoga">Yoga Camp</option>
+          <option value="art">Art Workshop</option>
+        </select><br>
+        <textarea name="message" placeholder="Your Message"></textarea><br>
+        <input type="text" name="phone" placeholder="Phone Number" onblur="validatePhone(this)"><br>
+        <button type="button" onclick="confirmRegistration()">Submit</button>
+        <output id="confirmation"></output>
+      </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <p class="highlight">We're here to help!</p>
+    </section>
+
+    <!-- Feedback -->
+    <section>
+      <h3>Give Feedback</h3>
+      <textarea id="feedback" placeholder="Type your feedback..." onkeyup="countChars(this)"></textarea>
+      <p>Characters: <span id="charCount">0</span></p>
+    </section>
+
+    <!-- Video Invite -->
+    <section>
+      <video id="promoVideo" width="320" controls oncanplay="videoReady()">
+        <source src="promo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p id="videoStatus"></p>
+    </section>
+
+    <!-- Geolocation -->
+    <section>
+      <button onclick="findEvents()">Find Nearby Events</button>
+      <p id="location"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Local City Council</p>
+    <button onclick="clearPreferences()">Clear Preferences</button>
+  </footer>
+
+  <!-- Internal CSS and Scripts -->
+  <style>
+    #welcomeBanner { background-color: #add8e6; padding: 10px; }
+    .highlight { color: darkblue; font-weight: bold; }
+    .event-img { border: 2px solid black; width: 100px; height: auto; }
+    form input, form select, form textarea { margin: 5px 0; display: block; }
+  </style>
+
+  <script>
+    window.onbeforeunload = function () {
+      return "You have unsaved changes!";
+    };
+
+    function validatePhone(input) {
+      const pattern = /^[0-9]{10}$/;
+      if (!pattern.test(input.value)) {
+        alert("Please enter a valid 10-digit phone number.");
+        input.focus();
+      }
+    }
+
+    function showFee(select) {
+      const fees = {
+        "cleanup": "$5",
+        "yoga": "$10",
+        "art": "$8"
+      };
+      if (select.value) {
+        alert("Fee for selected event: " + fees[select.value]);
+        localStorage.setItem("preferredEvent", select.value);
+      }
+    }
+
+    function confirmRegistration() {
+      document.getElementById("confirmation").textContent = "Thank you for registering!";
+    }
+
+    function countChars(textarea) {
+      document.getElementById("charCount").textContent = textarea.value.length;
+    }
+
+    function videoReady() {
+      document.getElementById("videoStatus").textContent = "Video ready to play";
+    }
+
+    function findEvents() {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          document.getElementById("location").textContent =
+            `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
+        },
+        (error) => {
+          document.getElementById("location").textContent = `Error: ${error.message}`;
+        },
+        { enableHighAccuracy: true, timeout: 5000 }
+      );
+    }
+
+    window.onload = function () {
+      const savedEvent = localStorage.getItem("preferredEvent");
+      if (savedEvent) {
+        document.getElementById("eventType").value = savedEvent;
+      }
+    };
+
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      alert("Preferences cleared.");
+    }
+  </script>
+
+</body>
+</html>
