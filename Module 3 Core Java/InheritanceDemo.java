@@ -16,7 +16,7 @@ public class InheritanceDemo {
         Animal a = new Animal();
         Dog d = new Dog();
 
-        a.makeSound(); // Outputs: Some generic animal sound
-        d.makeSound(); // Outputs: Bark
+        a.makeSound(); // Output: Some animal sound
+        d.makeSound(); // Output: Bark
     }
 }
