@@ -1,6 +1,3 @@
-// Assume you have a container in your HTML to display events:
-// <div id="eventContainer"></div>
-
 // Sample events array (from previous exercise)
 const events = [
   { name: "Music Concert", category: "Music", date: "2025-07-15", seats: 50 },
@@ -46,8 +43,6 @@ function displayEvents(eventList) {
     eventContainer.appendChild(card);
   });
 }
-
-// Task 3: Update UI when user registers or cancels (handled inside button click above)
-
+// Task 3: Update UI when user registers or cancels 
 // Initial display
 displayEvents(events);
