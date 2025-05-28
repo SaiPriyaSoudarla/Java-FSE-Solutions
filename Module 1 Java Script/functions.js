@@ -5,13 +5,13 @@ const events = [
   { name: "Coding Bootcamp", category: "Tech", seats: 8 },
 ];
 
-// 1️⃣ Function to add new event
+// Function to add new event
 function addEvent(name, category, seats) {
   events.push({ name, category, seats });
   console.log(`Added: ${name} in ${category} with ${seats} seats.`);
 }
 
-// 2️⃣ Function to register user to event
+// Function to register user to event
 function registerUser(eventName) {
   const event = events.find(e => e.name === eventName);
   if (event && event.seats > 0) {
@@ -22,7 +22,7 @@ function registerUser(eventName) {
   }
 }
 
-// 3️⃣ Closure to track total registrations per category
+//  Closure to track total registrations per category
 function createCategoryTracker() {
   const counts = {};
 
@@ -34,14 +34,14 @@ function createCategoryTracker() {
 
 const trackRegistration = createCategoryTracker();
 
-// 4️⃣ Higher-order function to filter events
+// Higher-order function to filter events
 function filterEvents(callback) {
   const filtered = events.filter(callback);
   console.log("Filtered Events:");
   filtered.forEach(e => console.log(`- ${e.name} (${e.category})`));
 }
 
-// 🧪 Test Functions
+// Test Functions
 addEvent("Dance Night", "Entertainment", 6);
 registerUser("Music Night");
 trackRegistration("Music");
