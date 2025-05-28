@@ -31,7 +31,7 @@ form.addEventListener('submit', function(event) {
     eventId: selectedEvent
   };
 
-  // Simulate a delayed API call using setTimeout and fetch
+  // delayed API call using setTimeout and fetch
   setTimeout(() => {
     fetch('https://mockapi.example.com/register', {
       method: 'POST',
