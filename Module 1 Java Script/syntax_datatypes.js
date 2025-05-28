@@ -21,7 +21,5 @@ function registerUser() {
     console.log("Registration failed. No seats available.");
   }
 }
-
-// Example usage
 registerUser();
 registerUser();
