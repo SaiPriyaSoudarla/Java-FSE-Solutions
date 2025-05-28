@@ -19,7 +19,7 @@ public class InterfaceExample {
         Playable g = new Guitar();
         Playable p = new Piano();
 
-        g.play(); // Outputs: Playing the guitar
-        p.play(); // Outputs: Playing the piano
+        g.play(); // Output: Playing the guitar
+        p.play(); // Output: Playing the piano
     }
 }
