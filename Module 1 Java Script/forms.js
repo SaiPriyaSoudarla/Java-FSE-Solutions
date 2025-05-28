@@ -20,9 +20,8 @@ form.addEventListener('submit', function(event) {
     errorMsg.textContent = "Please enter a valid email address.";
     return;
   }
-
   errorMsg.textContent = ""; // Clear error
-
+  
   // Process registration (e.g., send to backend or update UI)
   console.log(`Registering ${name} (${email}) for event ID ${selectedEvent}`);
 
@@ -30,7 +29,6 @@ form.addEventListener('submit', function(event) {
   form.reset();
 });
 
-// Helper function to validate email format
 function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
