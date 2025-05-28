@@ -1,7 +1,6 @@
-// Manage an array of all community events
 const events = [];
 
-// Define the Event class (from previous exercise for context)
+// Define the Event class 
 class Event {
   constructor(name, category, date, seats) {
     this.name = name;
@@ -26,7 +25,6 @@ const musicEvents = events.filter(event => event.category === "Music");
 // Task 3: Use .map() to format display cards (e.g., "Workshop on Baking")
 const eventCards = events.map(event => `${event.name} (${event.category})`);
 
-// Output results to console
 console.log("All Events:", events);
 console.log("Music Events:", musicEvents);
 console.log("Event Cards:", eventCards);
