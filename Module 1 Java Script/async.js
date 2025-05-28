@@ -13,7 +13,7 @@ function hideLoading() {
   loadingSpinner.style.display = "none";
 }
 
-// Fetch events using Promises (.then/.catch)
+// Fetch events using Promises 
 function fetchEventsPromise() {
   showLoading();
   fetch(API_URL)
@@ -25,7 +25,7 @@ function fetchEventsPromise() {
     })
     .then(data => {
       hideLoading();
-      displayEvents(data.slice(0, 5)); // Display first 5 posts as dummy events
+      displayEvents(data.slice(0, 5)); 
     })
     .catch(error => {
       hideLoading();
@@ -49,8 +49,6 @@ async function fetchEventsAsync() {
     eventContainer.textContent = "Failed to load events.";
   }
 }
-
-// Reusing displayEvents function from previous example with minor tweak:
 function displayEvents(events) {
   eventContainer.innerHTML = "";
   events.forEach(event => {
